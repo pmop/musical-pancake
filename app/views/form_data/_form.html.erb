@@ -13,14 +13,12 @@
 
   <div class="field">
     <%= form.label :number %>
-    <%= form.number_field :number %>
+    <%= form.collection_select :id, Street.order(:name), :number, :number, {}, { 'id' => 'number-selector' } %>
   </div>
 
   <div class="field">
     <%= form.label :street %>
-    <%#<%= form.select :street, @communes_street_postal_codes.where(city: @form_datum.city).pluck(:street) %>
-
-    <%= form.collection_select :id, Street.order(:name), :name_upper_case, :name_upper_case, {}, { 'id' => 'street-selector' } %>
+    <%= form.collection_select :id, Street.order(:name), :name_upper_case, :name_upper_case, {}, { 'id' => 'street-selector', 'data-action' => 'change->form-data#streetSelectHandler' } %>
   </div>
 
   <div class="field">
