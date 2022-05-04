@@ -26,3 +26,4 @@ communes
 
 When setting up webpack relate things: `export NODE_OPTIONS=--openssl-legacy-provider`
 
+Get in the form by navigating to `/form_data/new`
