@@ -25,13 +25,13 @@
 
   <div class="field">
     <%= form.label :postal_code %>
-    <%= form.text_field :postal_code %>
+    <%= form.text_field :postal_code, { 'data-action' => 'input->form-data#postalCodeHandler', 'data-form-data-target' => 'postalCodeField' } %>
   </div>
 
   <div class="field">
     <%= form.label :city %>
     <%#<%= form.select :city, @communes.pluck(:name_upper_case).to_a %>
-    <%= form.collection_select :city_id, Commune.order(:name), :name_upper_case, :name, {}, {'data-action' => 'change->form-data#citySelectHandler', 'data-form-data-target' => 'citySelect' } %>
+    <%= form.collection_select :city_id, Commune.order(:name), :name_upper_case, :name, {}, { 'data-action' => 'change->form-data#citySelectHandler', 'data-form-data-target' => 'citySelect', 'id' => 'city-select' } %>
   </div>
 
   <div class="field">
