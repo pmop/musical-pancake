@@ -1,0 +1,45 @@
+<%= form_with(model: form_datum, html: { 'data-controller' => 'form-data' }) do |form| %>
+  <% if form_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(form_datum.errors.count, "error") %> prohibited this form_datum from being saved:</h2>
+
+      <ul>
+        <% form_datum.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street %>
+    <%#<%= form.select :street, @communes_street_postal_codes.where(city: @form_datum.city).pluck(:street) %>
+
+    <%= form.collection_select :id, Street.order(:name), :name_upper_case, :name_upper_case, {}, { 'id' => 'street-selector' } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postal_code %>
+    <%= form.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%#<%= form.select :city, @communes.pluck(:name_upper_case).to_a %>
+    <%= form.collection_select :city_id, Commune.order(:name), :name_upper_case, :name, {}, {'data-action' => 'change->form-data#citySelectHandler', 'data-form-data-target' => 'citySelect' } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
