@@ -1,7 +1,7 @@
 Fabricator(:street) do
   number          1
-  name            "MyString"
-  name_upper_case "MyString"
-  mot_tri         "MyString"
-  indic_lieu_dit  "MyString"
+  name            'Ale Wee'
+  name_upper_case 'ALE WEE'
+  mot_tri         'ALE'
+  indic_lieu_dit  'N'
 end

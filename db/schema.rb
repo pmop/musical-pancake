@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_03_110132) do
+ActiveRecord::Schema.define(version: 2022_05_04_034557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,27 @@ ActiveRecord::Schema.define(version: 2022_05_03_110132) do
     t.string "debut_tranche"
     t.string "fin_tranche"
     t.string "paire_impaire"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "communes", force: :cascade do |t|
+    t.integer "code"
+    t.string "name"
+    t.string "name_upper_case"
+    t.date "ds_timestamp_modif"
+    t.integer "canto_code_fk"
+    t.string "letter_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "form_data", force: :cascade do |t|
+    t.integer "number"
+    t.string "street"
+    t.string "postal_code"
+    t.string "city"
+    t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
