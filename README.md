@@ -14,4 +14,15 @@ Things you may want to cover:
 - Webpack
 * Database initialization
 Seed by running `bundle exec rake populate:<task name>` 
+
+* task names are:
+```
+postal_code_cities
+city_street_postal_codes
+streets
+buildings
+communes
+```
+
 When setting up webpack relate things: `export NODE_OPTIONS=--openssl-legacy-provider`
+
