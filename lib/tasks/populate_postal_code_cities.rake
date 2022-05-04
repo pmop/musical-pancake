@@ -51,4 +51,20 @@ namespace :populate do
       end
     end
   end
+
+  task :communes => :environment do
+    cols_to_save_names = %i[code name name_upper_case ds_timestamp_modif canto_code_fk letter_code]
+
+    ActiveRecord::Base.transaction do
+      Commune.delete_all
+      CSV.foreach("#{Rails.root}/db/seed_data/communes_utf8.csv", headers: false, col_sep: ';') do |row|
+        row = row.map(&:strip)
+
+        attributes = cols_to_save_names.zip(row).to_h
+        attributes[:ds_timestamp_modif] = attributes[:ds_timestamp_modif].to_date
+
+        Commune.create!(attributes)
+      end
+    end
+  end
 end
