@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :number %>
-    <%= form.collection_select :id, Street.order(:name), :number, :number, {}, { 'id' => 'number-selector' } %>
+    <%= form.collection_select :id, @street_numbers, :number, :number, {}, { 'id' => 'number-selector' } %>
   </div>
 
   <div class="field">
     <%= form.label :street %>
-    <%= form.collection_select :id, Street.order(:name), :name_upper_case, :name_upper_case, {}, { 'id' => 'street-selector', 'data-action' => 'change->form-data#streetSelectHandler' } %>
+    <%= form.collection_select :id, @city_streets, :street, :street, {}, { 'id' => 'street-selector', 'data-action' => 'change->form-data#streetSelectHandler' } %>
   </div>
 
   <div class="field">
@@ -34,7 +34,7 @@
 
   <div class="field">
     <%= form.label :country %>
-    <%= form.text_field :country %>
+    <%= form.select :country, ['Luxembourg'] %>
   </div>
 
   <div class="actions">
