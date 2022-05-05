@@ -14,8 +14,8 @@ class FormDataController < ApplicationController
   def new
     @form_datum = FormDatum.new(city: 'LUXEMBOURG')
 
-    @communes = Commune.all
-    @communes_street_postal_codes = CityStreetPostalCode
+    @city_streets = CityStreetPostalCode.where(city: @form_datum.city).order(:street)
+    @street_numbers = Street.where(name_upper_case: @city_streets.first.street).order(:number)
   end
 
   # GET /form_data/1/edit
